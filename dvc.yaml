@@ -1,0 +1,20 @@
+stages:
+  run_notebook:
+    cmd: papermill AutoML.ipynb output.ipynb  
+    deps:
+    - CustomerSegmentation_Train.csv
+    - AutoML.ipynb
+    outs:
+    - output.ipynb
+    metrics:
+    - metrics.json:
+        cache: false
+    plots:
+    - plot.png:
+        cache: false
+  run_experiment:
+    cmd: papermill output.ipynb results.ipynb 
+    deps:
+    - output.ipynb
+    outs:
+    - results.ipynb
