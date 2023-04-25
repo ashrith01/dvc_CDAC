@@ -17,4 +17,4 @@ stages:
     deps:
     - output.ipynb
     outs:
-    - results.ipynb
+    - results.ipynb
