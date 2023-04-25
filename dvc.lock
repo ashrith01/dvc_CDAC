@@ -1,0 +1,41 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: papermill AutoML.ipynb output.ipynb
+    deps:
+    - path: AutoML.ipynb
+      md5: 3535d52514a27d9d9546c06f50f1240b
+      size: 93424
+    outs:
+    - path: output.ipynb
+      md5: f93a3beabf9addeeec0c5531fa0d4f01
+      size: 101253
+  run_experiment:
+    cmd: papermill output.ipynb results.ipynb
+    deps:
+    - path: output.ipynb
+      md5: 00cbc256ee9e33c82110e8e0cf12aef1
+      size: 106028
+    outs:
+    - path: results.ipynb
+      md5: 6ba6ca154fc971f01b0ce390e1e879ab
+      size: 104812
+  run_notebook:
+    cmd: papermill AutoML.ipynb output.ipynb
+    deps:
+    - path: AutoML.ipynb
+      md5: 702382b33ec5e2805607e782ca312903
+      size: 93508
+    - path: CustomerSegmentation_Train.csv
+      md5: 2af30f5dda88ee0836783183fe3f27d3
+      size: 433438
+    outs:
+    - path: metrics.json
+      md5: cd99db5349f407f28f5080f144ab3c6e
+      size: 167
+    - path: output.ipynb
+      md5: 00cbc256ee9e33c82110e8e0cf12aef1
+      size: 106028
+    - path: plot.png
+      md5: bfeb11f76cebbd00c3b0edc5e17de808
+      size: 2396
